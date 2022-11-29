@@ -67,7 +67,7 @@ int main()
 
   fibonacci(cnt_1);
 
-  printf("Febunnaci: ");
+  printf("Fibonacci: ");
   for(n=0; n<20; n++){
     printf("%d ", cnt_1[n]);
   }
