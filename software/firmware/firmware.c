@@ -3,13 +3,26 @@
 #include "iob-uart.h"
 #include "printf.h"
 
-char *send_string = "Sending this string as a file to console.\n"
-                    "The file is then requested back from console.\n"
-                    "The sent file is compared to the received file to confirm " 
-                    "correct file transfer via UART using console.\n"
-                    "Generating the file in the firmware creates an uniform "
-                    "file transfer between pc-emul, simulation and fpga without"
-                    " adding extra targets for file generation.\n";
+//char *send_string = "Sending this string as a file to console.\n"
+  //                  "The file is then requested back from console.\n"
+    //                "The sent file is compared to the received file to confirm " 
+      //              "correct file transfer via UART using console.\n"
+        //            "Generating the file in the firmware creates an uniform "
+          //          "file transfer between pc-emul, simulation and fpga without"
+            //        " adding extra targets for file generation.\n";
+
+
+void fibonacci(int cnt_1[]){
+  int aux=0, cnt_0 = 0, counter = 1;
+
+  cnt_1[0]= 0; cnt_1[1] = 1;
+  while(counter < 20){
+    aux = cnt_1[counter];
+    cnt_1[counter+1] = cnt_1[counter] + cnt_0;
+    cnt_0 = aux;
+    counter++;
+  }
+}
 
 // copy src to dst
 // return number of copied chars (excluding '\0')
@@ -41,6 +54,8 @@ int compare_str(char *str1, char *str2, int str_size) {
 
 int main()
 {
+  int n = 0, cnt_1[20];
+
   //init uart
   uart_init(UART_BASE,FREQ/BAUD);
 
@@ -50,9 +65,19 @@ int main()
   //test printf with floats 
   printf("Value of Pi = %f\n\n", 3.1415);
 
+  fibonacci(cnt_1);
+
+  printf("Fibonacci: ");
+  for(n=0; n<20; n++){
+    printf("%d ", cnt_1[n]);
+  }
+  printf("\n\n");
+
   //test file send
-  char *sendfile = malloc(1000);
+/*  char *sendfile = malloc(1000);
   int send_file_size = 0;
+  
+  send_string = febunnaci();
   send_file_size = string_copy(sendfile, send_string);
   uart_sendfile("Sendfile.txt", send_file_size, sendfile);
 
@@ -69,7 +94,7 @@ int main()
   }
 
   free(sendfile);
-  free(recvfile);
+  free(recvfile);*/
 
   uart_finish();
 }
