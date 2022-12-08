@@ -36,6 +36,8 @@ int compare_str(char *str1, char *str2, int str_size) {
 int main()
 {
 
+  uint32_t a = 0;
+
   //init uart
   uart_init(UART_BASE,FREQ/BAUD);
 
@@ -46,6 +48,10 @@ int main()
   printf("Value of Pi = %f\n\n", 3.1415);
 
   gpio_init(GPIO_BASE);
+
+  a = gpio_get(16);
+
+  printf("algo = %d", a);
 
  // gpio_set();
 
