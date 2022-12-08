@@ -49,11 +49,13 @@ int main()
 
   gpio_init(GPIO_BASE);
 
-  a = gpio_get(16);
+  gpio_set_output_enable(16);
 
-  printf("algo = %d", a);
+  a = gpio_get();
 
- // gpio_set();
+  printf("algo = %d\n", a);
+
+  gpio_set(1);
 
   uart_finish();
 }
