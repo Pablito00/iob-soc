@@ -19,3 +19,6 @@
 [submodule "submodules/GPIO"]
 	path = submodules/GPIO
 	url = git@github.com:IObundle/iob-gpio.git
+[submodule "submodules/iob-gpio"]
+	path = submodules/iob-gpio
+	url = https://github.com/IObundle/iob-gpio

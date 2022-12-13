@@ -89,7 +89,8 @@ module system_top
       .rst(rst)
       );   
 `endif
-
+  
+  assign gpio_input = 1;
    
    //finish simulation on trap
    /* always @(posedge trap) begin
